@@ -14,8 +14,8 @@ function fillContainer(num) {
         for (let j = 0 ; j < num ; j++) {
 
             const newDiv = document.createElement("div");
-            newDiv.style["width"] = `${100/num}%`;
-            newDiv.style["height"] = `${551/num}px`;
+            newDiv.style["width"] = `${(1000 / num)}px`;
+            newDiv.style["height"] = `${(450 / num)}px`;
 
             newDiv.addEventListener("mouseenter" , () => {
                 newDiv.style["backgroundColor"] = "black";

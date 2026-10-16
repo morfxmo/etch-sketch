@@ -1,9 +1,15 @@
-.canvas {
+.heading {
+    font-family: Times, serif;
+    font-style: italic;
+    font-weight: bolder;
+}
+
+.canvas {   
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 18px;
+    gap: 10px;
 }
 
 .container {
@@ -11,7 +17,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    width: 1000px;
+    height: 450px;
     border: 5px solid gray;
 }
