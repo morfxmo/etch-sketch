@@ -1,4 +1,8 @@
 const container = document.querySelector(".container");
+let mouseIsDown = false;
+container.addEventListener("mousedown" , () => mouseIsDown = true);
+container.addEventListener("mouseup" , () => mouseIsDown = false);
+
 const resetBtn = document.querySelector(".reset-btn");
 resetBtn.addEventListener("click" , resetContainer);
 
@@ -19,8 +23,9 @@ function fillContainer(num) {
             newDiv.style["border"] = "1px solid black";
             newDiv.style["boxSizing"] = "border-box";
 
-            newDiv.addEventListener("mouseenter" , () => {
-                newDiv.style["backgroundColor"] = "black";
+            newDiv.addEventListener("mouseover" , () => {
+                if (mouseIsDown)
+                    newDiv.style["backgroundColor"] = "black";
             })
 
             container.appendChild(newDiv);
