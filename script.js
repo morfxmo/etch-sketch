@@ -1,7 +1,8 @@
 const container = document.querySelector(".container");
 let mouseIsDown = false;
-container.addEventListener("mousedown" , () => mouseIsDown = true);
-container.addEventListener("mouseup" , () => mouseIsDown = false);
+window.addEventListener("mousedown", () => mouseIsDown = true);
+window.addEventListener("mouseup", () => mouseIsDown = false);
+container.addEventListener("dragstart", (event) => event.preventDefault());
 
 const resetBtn = document.querySelector(".reset-btn");
 resetBtn.addEventListener("click" , resetContainer);
@@ -23,7 +24,13 @@ function fillContainer(num) {
             newDiv.style["border"] = "1px solid black";
             newDiv.style["boxSizing"] = "border-box";
 
-            newDiv.addEventListener("mouseover" , () => {
+            newDiv.addEventListener("mousedown" , (event) => {
+                event.preventDefault();
+                if (mouseIsDown)
+                    newDiv.style["backgroundColor"] = "black";
+            })
+
+            newDiv.addEventListener("mousemove" , () => {
                 if (mouseIsDown)
                     newDiv.style["backgroundColor"] = "black";
             })
@@ -38,7 +45,6 @@ function main() {
     while (num > 85) {
         num = prompt("Too much to handle, enter a new value (1 ==> 85)");
     }
-
     fillContainer(num);
 }
 
