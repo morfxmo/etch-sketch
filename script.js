@@ -14,12 +14,11 @@ function fillContainer(num) {
         for (let j = 0 ; j < num ; j++) {
 
             const newDiv = document.createElement("div");
-            newDiv.style["backgroundColor"] = "blue";
-            newDiv.style["width"] = "3px";
-            newDiv.style["height"] = "3px";
+            newDiv.style["width"] = `${100/num}%`;
+            newDiv.style["height"] = `${551/num}px`;
 
             newDiv.addEventListener("mouseenter" , () => {
-                newDiv.style["backgroundColor"] = "red";
+                newDiv.style["backgroundColor"] = "black";
             })
 
             container.appendChild(newDiv);
