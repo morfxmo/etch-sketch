@@ -16,6 +16,8 @@ function fillContainer(num) {
             const newDiv = document.createElement("div");
             newDiv.style["width"] = `${(1000 / num)}px`;
             newDiv.style["height"] = `${(450 / num)}px`;
+            newDiv.style["border"] = "1px solid black";
+            newDiv.style["boxSizing"] = "border-box";
 
             newDiv.addEventListener("mouseenter" , () => {
                 newDiv.style["backgroundColor"] = "black";
@@ -28,9 +30,8 @@ function fillContainer(num) {
 
 function main() {
     let num = prompt("Enter the new number of squares in one row : ");
-
-    while (num > 100) {
-        num = prompt("This is too much to handle, enter lower value");
+    while (num > 85) {
+        num = prompt("Too much to handle, enter a new value (1 ==> 85)");
     }
 
     fillContainer(num);
