@@ -1,16 +1,18 @@
 const container = document.querySelector(".container");
-let mouseIsDown = false;
+const resetBtn = document.querySelector(".reset-btn");
+let mouseIsDown = false , allBlacked = false;
+let blacked = 0;
+
 window.addEventListener("mousedown", () => mouseIsDown = true);
 window.addEventListener("mouseup", () => mouseIsDown = false);
 container.addEventListener("dragstart", (event) => event.preventDefault());
-
-const resetBtn = document.querySelector(".reset-btn");
 resetBtn.addEventListener("click" , resetContainer);
 
 function resetContainer() {
-    while (container.lastChild != null) {
-        container.removeChild(container.lastChild);
-    }
+    container.innerHTML = "";
+    blacked = 0;
+    allBlacked = false;
+    mouseIsDown = false;
     main();
 }
 
@@ -26,14 +28,24 @@ function fillContainer(num) {
 
             newDiv.addEventListener("mousedown" , (event) => {
                 event.preventDefault();
-                if (mouseIsDown)
+                if (mouseIsDown) {
+                    if (newDiv.style["backgroundColor"] !== "black") blacked++;
                     newDiv.style["backgroundColor"] = "black";
+
+                    if (blacked === num * num && !allBlacked)
+                        setTimeout(alert("go touch some grass lil bro 🙏🏿") , 100) , allBlacked = true;
+                }
             })
 
             newDiv.addEventListener("mousemove" , () => {
-                if (mouseIsDown)
+                if (mouseIsDown) {
+                    if (newDiv.style["backgroundColor"] !== "black") blacked++;
                     newDiv.style["backgroundColor"] = "black";
-            })
+
+                    if (blacked === num * num && !allBlacked)
+                        setTimeout(alert("go touch some grass lil bro 🙏🏿") , 100) , allBlacked = true;
+                }
+            });
 
             container.appendChild(newDiv);
         }
