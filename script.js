@@ -16,6 +16,16 @@ function resetContainer() {
     main();
 }
 
+function mark(newDiv , num) {
+    if (mouseIsDown) {
+        if (newDiv.style["backgroundColor"] !== "black") blacked++;
+        newDiv.style["backgroundColor"] = "black";
+
+        if (blacked === num * num && !allBlacked)
+            setTimeout(alert("go touch some grass lil bro 🙏🏿") , 100) , allBlacked = true;
+    }
+}
+
 function fillContainer(num) {
     for (let i = 0 ; i < num ; i++) {
         for (let j = 0 ; j < num ; j++) {
@@ -28,24 +38,9 @@ function fillContainer(num) {
 
             newDiv.addEventListener("mousedown" , (event) => {
                 event.preventDefault();
-                if (mouseIsDown) {
-                    if (newDiv.style["backgroundColor"] !== "black") blacked++;
-                    newDiv.style["backgroundColor"] = "black";
-
-                    if (blacked === num * num && !allBlacked)
-                        setTimeout(alert("go touch some grass lil bro 🙏🏿") , 100) , allBlacked = true;
-                }
+                mark(newDiv , num);
             })
-
-            newDiv.addEventListener("mousemove" , () => {
-                if (mouseIsDown) {
-                    if (newDiv.style["backgroundColor"] !== "black") blacked++;
-                    newDiv.style["backgroundColor"] = "black";
-
-                    if (blacked === num * num && !allBlacked)
-                        setTimeout(alert("go touch some grass lil bro 🙏🏿") , 100) , allBlacked = true;
-                }
-            });
+            newDiv.addEventListener("mousemove" , () => {mark(newDiv , num);});
 
             container.appendChild(newDiv);
         }
